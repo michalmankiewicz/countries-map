@@ -2,25 +2,38 @@ import { CurrencyCircleDollar, House, UsersThree } from '@phosphor-icons/react';
 import React from 'react';
 import './CountryItem.scss';
 
-function CountryItem() {
+type Props = {
+  name: string;
+  population: number;
+  currency: string[];
+  coordinates: [number, number];
+  imgUrl: string;
+  capital: string[];
+};
+
+function CountryItem(props: Props) {
+  const currency = props.currency.join(', ');
+  const capital = props.capital.join(', ');
+  const population = props.population / 1000000;
+
   return (
     <li className="country-item">
       <div className="country-item__img">
-        <img src="data:image/png;base64,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" />
+        <img src={props.imgUrl} />
       </div>
       <div className="country-item__description">
-        <h4>Spain</h4>
+        <h3>{props.name}</h3>
         <div className="country-item__description--category">
-          <House size={32} />
-          <p>Madrit</p>
+          <House />
+          <p>{capital}</p>
         </div>
         <div className="country-item__description--category">
-          <CurrencyCircleDollar size={32} />
-          <p>Dollar</p>
+          <CurrencyCircleDollar />
+          <p>{currency}</p>
         </div>
         <div className="country-item__description--category">
-          <UsersThree size={32} />
-          <p>62 MLN</p>
+          <UsersThree />
+          <p>{population}m</p>
         </div>
       </div>
     </li>
