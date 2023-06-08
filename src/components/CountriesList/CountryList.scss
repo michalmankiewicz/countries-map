@@ -1,0 +1,21 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.country-list {
+  height: 100%;
+  margin: 0 1rem;
+  overflow: hidden;
+
+  h2 {
+    color: $font-color-white;
+  }
+
+  ul {
+    @include flexbox($direction: column);
+    height: 100%;
+    margin-left: 0.4rem;
+    overflow: scroll;
+    overflow: scroll;
+    gap: 0.8rem;
+  }
+}

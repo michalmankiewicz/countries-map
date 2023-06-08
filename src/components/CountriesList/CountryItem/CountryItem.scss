@@ -1,0 +1,43 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.country-item {
+  @include flexbox($placeItems: center);
+  padding: 1.6rem;
+  color: $font-color-white;
+  gap: 2rem;
+  background-color: $secondary-color;
+  border-radius: $border-radius;
+
+  &__img {
+    img {
+      width: 100%;
+      border-radius: $border-radius;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+
+    h4 {
+      margin-bottom: 0.6rem;
+    }
+
+    &--category {
+      display: flex;
+      align-items: center;
+      margin-left: 0.4rem;
+      gap: 0.4rem;
+
+      svg {
+        width: 3rem;
+      }
+
+      p {
+        font-size: 2rem;
+        white-space: nowrap;
+      }
+    }
+  }
+}

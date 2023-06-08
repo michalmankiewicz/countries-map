@@ -1,0 +1,17 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.search-countries-form {
+  @include flexbox($direction: column);
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 1.6rem;
+  color: $font-color-white;
+  gap: 1.6rem;
+  background-color: $secondary-color;
+  border-radius: $border-radius;
+
+  input {
+    width: 100%;
+  }
+}

@@ -1,0 +1,61 @@
+// Typography Variables
+$font-family: 'Helvetica Neue', Arial, sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.5;
+
+// Typography Styles
+$body-font-family: $font-family;
+$body-font-size: $font-size-base;
+$body-line-height: $line-height-base;
+$h1-font-size: 4rem;
+$h2-font-size: 3rem;
+$h3-font-size: 2.4rem;
+$h4-font-size: 2rem;
+$h5-font-size: 1.6rem;
+$h6-font-size: 1rem;
+
+// Typography Mixins
+@mixin font-family($family) {
+  font-family: $family;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+}
+
+@mixin line-height($height) {
+  line-height: $height;
+}
+
+// Typography Styles
+body {
+  @include font-family($body-font-family);
+
+  @include font-size($body-font-size);
+
+  @include line-height($body-line-height);
+}
+
+h1 {
+  @include font-size($h1-font-size);
+}
+
+h2 {
+  @include font-size($h2-font-size);
+}
+
+h3 {
+  @include font-size($h3-font-size);
+}
+
+h4 {
+  @include font-size($h4-font-size);
+}
+
+h5 {
+  @include font-size($h5-font-size);
+}
+
+h6 {
+  @include font-size($h6-font-size);
+}

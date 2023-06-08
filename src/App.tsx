@@ -1,5 +1,13 @@
+import MapContainer from './components/Map/MapContainer';
+import Sidebar from './components/Sidebar/Sidebar';
+
 function App() {
-  return <h1>Init</h1>;
+  return (
+    <div className="main-container">
+      <Sidebar />
+      <MapContainer />
+    </div>
+  );
 }
 
 export default App;

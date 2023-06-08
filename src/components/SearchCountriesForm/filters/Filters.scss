@@ -1,0 +1,11 @@
+@import '../../../styles/abstracts/mixins';
+
+.filters-container {
+  @include flexbox();
+  margin: 0 0.8rem;
+  gap: 0.6rem;
+  span {
+    margin-right: 0.4rem;
+    font-size: 2rem;
+  }
+}

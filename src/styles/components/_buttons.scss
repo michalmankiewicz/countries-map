@@ -1,0 +1,15 @@
+.button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1.6rem;
+  color: $font-color-black;
+  background-color: $backgorund-color-white;
+  border: none;
+  border-radius: $border-radius;
+
+  &:hover {
+    color: $font-color-white;
+    background-color: $primary-color;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+  }
+}
