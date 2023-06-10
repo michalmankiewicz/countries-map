@@ -2,15 +2,18 @@ import React from 'react';
 import CountryItem from './CountryItem/CountryItem';
 import './CountryList.scss';
 import { useGetAllCountriesQuery } from '../../api/countriesApiSlice';
+import { useAppSelector } from '../../types/redux';
+import { filterBySearch } from '../../utils';
 
 function CountryList() {
   const { data, isLoading, isError, isSuccess } = useGetAllCountriesQuery('');
 
-  console.log(data);
+  const { searchValue, filter } = useAppSelector((state) => state.search);
 
   const countries = data?.map((c) => {
-    if (c.currencies && Object.entries(c.currencies).length === 2)
-      console.log(c.name, c.currencies);
+    if (c.currencies && Object.entries(c.currencies).length > 1) console.log(c.name, c.currencies);
+
+    // if (c.capital && c.capital.length > 1) console.log(c.name, c.capital);
 
     return {
       name: c.name.common,
@@ -22,12 +25,14 @@ function CountryList() {
     };
   });
 
+  const filteredCountries = filterBySearch(countries, searchValue, filter);
+
   return (
     <div className="country-list">
       <h2>Countries ({countries?.length}) </h2>
       <ul>
         {isSuccess &&
-          countries?.map((c) => (
+          filteredCountries?.map((c) => (
             <CountryItem
               key={c.name}
               name={c.name}

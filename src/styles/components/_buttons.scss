@@ -6,7 +6,8 @@
   border: none;
   border-radius: $border-radius;
 
-  &:hover {
+  &:hover,
+  &--active {
     color: $font-color-white;
     background-color: $primary-color;
     cursor: pointer;

@@ -1,15 +1,9 @@
 import { CurrencyCircleDollar, House, UsersThree } from '@phosphor-icons/react';
 import React from 'react';
 import './CountryItem.scss';
+import { Country } from '../../../types/countries';
 
-type Props = {
-  name: string;
-  population: number;
-  currency: string[];
-  coordinates: [number, number];
-  imgUrl: string;
-  capital: string[];
-};
+type Props = Country;
 
 function CountryItem(props: Props) {
   const currency = props.currency.join(', ');

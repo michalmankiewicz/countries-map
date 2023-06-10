@@ -21,3 +21,12 @@ interface Currencies {
     symbol: string;
   };
 }
+
+export type Country = {
+  name: string;
+  population: number;
+  currency: string[];
+  coordinates: [number, number];
+  imgUrl: string;
+  capital: string[];
+};
