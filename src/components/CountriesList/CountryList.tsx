@@ -3,35 +3,25 @@ import CountryItem from './CountryItem/CountryItem';
 import './CountryList.scss';
 import { useGetAllCountriesQuery } from '../../api/countriesApiSlice';
 import { useAppSelector } from '../../types/redux';
-import { filterBySearch } from '../../utils';
+import { filterBySearch, mapFetchedCountries } from '../../utils';
+import { Spinner } from '@phosphor-icons/react';
 
 function CountryList() {
   const { data, isLoading, isError, isSuccess } = useGetAllCountriesQuery('');
 
   const { searchValue, filter } = useAppSelector((state) => state.search);
 
-  const countries = data?.map((c) => {
-    if (c.currencies && Object.entries(c.currencies).length > 1) console.log(c.name, c.currencies);
-
-    // if (c.capital && c.capital.length > 1) console.log(c.name, c.capital);
-
-    return {
-      name: c.name.common,
-      currency: c.currencies ? Object.values(c.currencies).map((cur) => cur.name) : ['Unknown'],
-      population: c.population,
-      coordinates: c.capitalInfo.latlng,
-      imgUrl: c.flags.png,
-      capital: c.capital ? c.capital : ['Unknown'],
-    };
-  });
-
+  const countries = mapFetchedCountries(data);
   const filteredCountries = filterBySearch(countries, searchValue, filter);
 
   return (
     <div className="country-list">
-      <h2>Countries ({countries?.length}) </h2>
+      <h2>Countries {filteredCountries ? `(${filteredCountries.length})` : ''} </h2>
+
       <ul>
+        {isLoading && <Spinner className="spinner" />}
         {isSuccess &&
+          filteredCountries?.length !== 0 &&
           filteredCountries?.map((c) => (
             <CountryItem
               key={c.name}
@@ -43,6 +33,10 @@ function CountryList() {
               capital={c.capital}
             />
           ))}
+        {isSuccess && filteredCountries?.length === 0 && (
+          <p className="country-list__message">There is no results for this search.</p>
+        )}
+        {isError && <p className="country-list__message">Something went wrong!</p>}
       </ul>
     </div>
   );

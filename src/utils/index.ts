@@ -1,4 +1,21 @@
-import { Country } from '../types/countries';
+import { Country, FetchedCountry } from '../types/countries';
+
+export const mapFetchedCountries = (
+  fetchedCountries: FetchedCountry[] | undefined
+): Country[] | undefined => {
+  if (!fetchedCountries) return;
+
+  return fetchedCountries?.map((c) => {
+    return {
+      name: c.name.common,
+      currency: c.currencies ? Object.values(c.currencies).map((cur) => cur.name) : ['Unknown'],
+      population: c.population,
+      coordinates: c.capitalInfo.latlng,
+      imgUrl: c.flags.png,
+      capital: c.capital ? c.capital : ['Unknown'],
+    };
+  });
+};
 
 export const filterBySearch = (
   countries: Country[] | undefined,
