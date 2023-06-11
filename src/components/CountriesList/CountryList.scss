@@ -7,15 +7,16 @@
   margin-left: 1rem;
   overflow-x: hidden;
   overflow-y: scroll;
+
   h2 {
     margin-bottom: 0.4rem;
     color: $font-color-white;
   }
 
   ul {
-    @include flexbox($wrap: wrap);
+    @include flexbox($wrap: wrap, $direction: column, $alignItems: center);
     min-height: 50%;
-    margin-left: 0.4rem;
+    margin: 0 2rem 0 1rem;
     gap: 1.6rem;
   }
 

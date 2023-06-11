@@ -15,7 +15,6 @@
   flex-grow: $grow;
   flex-shrink: $shrink;
   flex-direction: $direction;
-
   flex-wrap: $wrap;
 
   @if $placeContent == null {
@@ -38,5 +37,22 @@
     }
   } @else {
     place-items: $placeItems;
+  }
+}
+
+@mixin for-phone-only {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-portrait {
+  @media (max-width: 900px) {
+    @content;
+  }
+}
+@mixin for-tablet-landscape {
+  @media (max-width: 1200px) {
+    @content;
   }
 }

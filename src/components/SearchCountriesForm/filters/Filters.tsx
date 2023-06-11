@@ -15,20 +15,22 @@ function Filters(props: Props) {
   };
 
   return (
-    <div className="filters-container">
-      <span>Search by:</span>
-      <button
-        onClick={() => handleFilterChange('Country')}
-        className={`button ${filter === 'Country' ? 'button--active' : ''}`}
-      >
-        Country
-      </button>
-      <button
-        onClick={() => handleFilterChange('Capital')}
-        className={`button ${filter === 'Capital' ? 'button--active' : ''}`}
-      >
-        Capital
-      </button>
+    <div className="filters">
+      <p className="filters__text">Search by:</p>
+      <div className="filters__buttons">
+        <button
+          onClick={() => handleFilterChange('Country')}
+          className={`button ${filter === 'Country' ? 'button--active' : ''}`}
+        >
+          Country
+        </button>
+        <button
+          onClick={() => handleFilterChange('Capital')}
+          className={`button ${filter === 'Capital' ? 'button--active' : ''}`}
+        >
+          Capital
+        </button>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,11 @@
 @import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
 
 .map-container {
   flex: 1;
   background-color: green;
+
+  @include for-tablet-portrait {
+    width: 100vw;
+  }
 }
