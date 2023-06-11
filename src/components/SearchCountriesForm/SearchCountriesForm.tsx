@@ -7,31 +7,27 @@ import { setFilter, setSearchValue } from '../../store/search/searchSlice';
 function SearchCountriesForm() {
   const dispatch = useAppDispatch();
 
-  const [search, setSearch] = useState({
-    searchValue: '',
-    filter: 'Country',
-  });
+  const [searchInputValue, setSearchInputValue] = useState('');
+  const [filterValue, setFilterValue] = useState<'Country' | 'Capital'>('Country');
 
   const handleFilterChange = (value: 'Country' | 'Capital') => {
-    setSearch((prevState) => {
-      return { ...prevState, filter: value };
-    });
+    setFilterValue(value);
     dispatch(setFilter(value));
   };
 
-  const handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setSearch((prevState) => {
-      return { ...prevState, searchValue: (e.target as HTMLInputElement).value };
-    });
-    dispatch(setSearchValue((e.target as HTMLInputElement).value));
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = (e.target as HTMLInputElement).value;
+    setSearchInputValue(value);
+    dispatch(setSearchValue(value));
   };
 
   return (
     <div className="search-countries-form">
       <input
         placeholder="Search countries..."
+        type="text"
         className="search-input"
-        value={search.searchValue}
+        value={searchInputValue}
         onChange={handleInputChange}
       />
       <Filters onFilterChange={handleFilterChange} />
