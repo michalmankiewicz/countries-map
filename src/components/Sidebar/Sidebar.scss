@@ -23,22 +23,22 @@
 .mobile-button {
   display: none;
   z-index: 100;
+  position: fixed;
+  background-color: $primary-color;
+  color: $font-color-white;
+  padding: 2rem 1rem;
+  border: none;
+  border-radius: $border-radius;
+  left: -1rem;
+  top: 50%;
+
+  svg {
+    font-size: 10rem;
+    transition: all 0.2s ease-out;
+  }
 
   @include for-tablet-portrait {
     display: block;
-    position: fixed;
-    background-color: $primary-color;
-    color: $font-color-white;
-    padding: 2rem 1rem;
-    border: none;
-    border-radius: $border-radius;
-    left: -1rem;
-    top: 50%;
-
-    svg {
-      font-size: 10rem;
-      transition: all 0.2s ease-out;
-    }
 
     &--close {
       svg {

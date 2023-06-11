@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import CountryItem from './CountryItem/CountryItem';
 import './CountryList.scss';
 import { useGetAllCountriesQuery } from '../../api/countriesApiSlice';
@@ -7,16 +7,12 @@ import { filterBySearch, mapFetchedCountries } from '../../utils';
 import { Spinner } from '@phosphor-icons/react';
 import { Country } from '../../types/countries';
 import { setMarker } from '../../store/search/searchSlice';
-import { useSelector } from 'react-redux';
 
 function CountryList() {
   const dispatch = useAppDispatch();
+
   const { data, isLoading, isError, isSuccess } = useGetAllCountriesQuery('');
-
   const { searchValue, filter } = useAppSelector((state) => state.search);
-
-  const countries = mapFetchedCountries(data);
-  const filteredCountries = filterBySearch(countries, searchValue, filter);
 
   const [activeItem, setActiveItem] = useState('');
 
@@ -25,10 +21,12 @@ function CountryList() {
     setActiveItem(name);
   };
 
+  const countries = mapFetchedCountries(data);
+  const filteredCountries = filterBySearch(countries, searchValue, filter);
+
   return (
     <div className="country-list">
       <h2>Countries {filteredCountries ? `(${filteredCountries.length})` : ''} </h2>
-
       <ul>
         {isLoading && <Spinner className="spinner" />}
         {isSuccess &&

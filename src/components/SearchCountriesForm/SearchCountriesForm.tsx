@@ -3,14 +3,16 @@ import Filters from './filters/Filters';
 import './SearchCountriesForm.scss';
 import { useAppDispatch } from '../../types/redux';
 import { setFilter, setSearchValue } from '../../store/search/searchSlice';
+import { Filter } from '../../types/countries';
+import { filters } from '../../constants';
 
 function SearchCountriesForm() {
   const dispatch = useAppDispatch();
 
   const [searchInputValue, setSearchInputValue] = useState('');
-  const [filterValue, setFilterValue] = useState<'Country' | 'Capital'>('Country');
+  const [filterValue, setFilterValue] = useState<Filter>(filters.country);
 
-  const handleFilterChange = (value: 'Country' | 'Capital') => {
+  const handleFilterChange = (value: Filter) => {
     setFilterValue(value);
     dispatch(setFilter(value));
   };

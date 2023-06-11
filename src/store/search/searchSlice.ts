@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { Filter } from '../../types/countries';
+import { filters } from '../../constants';
 
 type SearchType = {
   searchValue: string;
-  filter: 'Country' | 'Capital';
+  filter: Filter;
   markerCoords:
     | {
         lat: number;
@@ -14,7 +16,7 @@ type SearchType = {
 
 const initialSearchState: SearchType = {
   searchValue: '',
-  filter: 'Country',
+  filter: filters.country,
   markerCoords: undefined,
 };
 
@@ -25,7 +27,7 @@ const searchSlice = createSlice({
     setSearchValue: (state, action: PayloadAction<string>) => {
       state.searchValue = action.payload;
     },
-    setFilter: (state, action: PayloadAction<'Country' | 'Capital'>) => {
+    setFilter: (state, action: PayloadAction<Filter>) => {
       state.filter = action.payload;
     },
     setMarker: (state, action: PayloadAction<SearchType['markerCoords']>) => {

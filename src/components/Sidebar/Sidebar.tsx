@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import SearchCountriesForm from '../SearchCountriesForm/SearchCountriesForm';
 import CountriesList from '../CountriesList/CountryList';
 import './Sidebar.scss';
-import { useGetAllCountriesQuery } from '../../api/countriesApiSlice';
 import { CaretRight } from '@phosphor-icons/react';
 
 function Sidebar() {
@@ -14,7 +13,11 @@ function Sidebar() {
 
   return (
     <>
-      <div className={`sidebar ${isMobileSidebarVisible ? '' : 'sidebar__mobile--closed'}`}>
+      <div
+        className={`sidebar ${
+          isMobileSidebarVisible ? 'sidebar__mobile--opened' : 'sidebar__mobile--closed'
+        }`}
+      >
         <SearchCountriesForm />
         <CountriesList />
       </div>

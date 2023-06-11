@@ -13,7 +13,12 @@ export const mapFetchedCountries = (
       imgUrl: c.flags.png,
       capital: c.capital ? c.capital : ['Unknown'],
       coords: {
-        lat: c.capitalInfo.latlng ? c.capitalInfo.latlng[0] : c.latlng[0],
+        lat: c.capitalInfo.latlng
+          ? c.capitalInfo.latlng[0]
+          : // Google Maps is not handling -90N latitude
+          c.name.common === 'Antarctica'
+          ? -75
+          : c.latlng[0],
         lng: c.capitalInfo.latlng ? c.capitalInfo.latlng[1] : c.latlng[1],
       },
     };

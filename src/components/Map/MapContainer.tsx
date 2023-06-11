@@ -1,19 +1,14 @@
-import React, { useMemo } from 'react';
 import { GoogleMap, MarkerF, useLoadScript } from '@react-google-maps/api';
 import './MapContainer.scss';
 import { useAppSelector } from '../../types/redux';
 import { Spinner } from '@phosphor-icons/react';
+import { defaultCenter } from '../../constants';
 
 function MapContainer() {
   const { markerCoords } = useAppSelector((state) => state.search);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_APP_GOOGLE_API_KEY ?? '',
   });
-
-  const defaultCenter = {
-    lat: 52.2297,
-    lng: 21.0122,
-  };
 
   return (
     <main className="map-container">

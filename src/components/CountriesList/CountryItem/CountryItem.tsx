@@ -1,5 +1,4 @@
 import { CurrencyCircleDollar, House, UsersThree } from '@phosphor-icons/react';
-import React from 'react';
 import './CountryItem.scss';
 import { Country } from '../../../types/countries';
 
@@ -11,7 +10,7 @@ type Props = Country & {
 function CountryItem(props: Props) {
   const currency = props.currency.join(', ');
   const capital = props.capital.join(', ');
-  const population = props.population / 1000000;
+  const population = props.population > 10000 ? (props.population / 1000000).toFixed(2) : '<0.01';
 
   return (
     <li

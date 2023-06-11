@@ -34,3 +34,5 @@ export type Country = {
     lng: number;
   };
 };
+
+export type Filter = 'Country' | 'Capital';
