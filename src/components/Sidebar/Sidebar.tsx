@@ -19,7 +19,7 @@ function Sidebar() {
         }`}
       >
         <SearchCountriesForm />
-        <CountriesList />
+        <CountriesList onCloseMobileSidebar={handleToggleSidebar} />
       </div>
       <button
         className={`mobile-button ${

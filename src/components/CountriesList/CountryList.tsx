@@ -8,7 +8,7 @@ import { Spinner } from '@phosphor-icons/react';
 import { Country } from '../../types/countries';
 import { setMarker } from '../../store/search/searchSlice';
 
-function CountryList() {
+function CountryList(props: { onCloseMobileSidebar: () => void }) {
   const dispatch = useAppDispatch();
 
   const { data, isLoading, isError, isSuccess } = useGetAllCountriesQuery('');
@@ -19,6 +19,7 @@ function CountryList() {
   const handleItemClick = (coords: Country['coords'], name: Country['name']) => {
     dispatch(setMarker(coords));
     setActiveItem(name);
+    props.onCloseMobileSidebar();
   };
 
   const countries = mapFetchedCountries(data);
