@@ -3,6 +3,7 @@
 
 .sidebar {
   @include flexbox($direction: column, $placeItems: center);
+  z-index: 100;
   width: 30%;
   padding: 2rem;
   background-color: $backgorund-color-dark;
@@ -21,6 +22,7 @@
 
 .mobile-button {
   display: none;
+  z-index: 100;
 
   @include for-tablet-portrait {
     display: block;

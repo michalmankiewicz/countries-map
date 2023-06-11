@@ -26,8 +26,6 @@ function SearchCountriesForm() {
     dispatch(setSearchValue((e.target as HTMLInputElement).value));
   };
 
-  console.log(search);
-
   return (
     <div className="search-countries-form">
       <input

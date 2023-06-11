@@ -13,6 +13,7 @@ export type FetchedCountry = {
     png: string;
     svg: string;
   };
+  latlng: [number, number];
 };
 
 interface Currencies {
@@ -26,7 +27,10 @@ export type Country = {
   name: string;
   population: number;
   currency: string[];
-  coordinates: [number, number];
   imgUrl: string;
   capital: string[];
+  coords: {
+    lat: number;
+    lng: number;
+  };
 };

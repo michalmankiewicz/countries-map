@@ -3,9 +3,23 @@
 
 .map-container {
   flex: 1;
-  background-color: green;
+  position: relative;
+  background-color: $secondary-color;
 
   @include for-tablet-portrait {
     width: 100vw;
+  }
+
+  .map {
+    height: 100%;
+    width: 100%;
+  }
+
+  &__spinner {
+    height: 100%;
+    width: 100%;
+    @include flexbox($placeItems: center);
+    font-size: 16rem;
+    color: $primary-color;
   }
 }

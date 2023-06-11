@@ -10,7 +10,8 @@
   gap: 1rem;
   background-color: $secondary-color;
   border-radius: $border-radius;
-  &:hover {
+  &:hover,
+  &--active {
     background-color: $primary-color;
     cursor: pointer;
     transition: all 0.2s ease-out;

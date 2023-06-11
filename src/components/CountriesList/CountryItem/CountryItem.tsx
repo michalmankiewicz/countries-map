@@ -3,7 +3,10 @@ import React from 'react';
 import './CountryItem.scss';
 import { Country } from '../../../types/countries';
 
-type Props = Country;
+type Props = Country & {
+  onClick: (coords: Country['coords'], name: Country['name']) => void;
+  activeCountry: string;
+};
 
 function CountryItem(props: Props) {
   const currency = props.currency.join(', ');
@@ -11,7 +14,10 @@ function CountryItem(props: Props) {
   const population = props.population / 1000000;
 
   return (
-    <li className="country-item">
+    <li
+      className={`country-item ${props.activeCountry === props.name ? 'country-item--active' : ''}`}
+      onClick={() => props.onClick(props.coords, props.name)}
+    >
       <div className="country-item__img">
         <img src={props.imgUrl} />
       </div>
