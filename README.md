@@ -37,4 +37,9 @@ To start the project, follow these steps:
 
    ```bash
    npm run preview
+
+8. To test the app:
+
+   ```powershell
+   npm run test
   
